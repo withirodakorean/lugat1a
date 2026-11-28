@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>So'z testlari 1A · @with_IrodaKorean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6fa;--card:#fff;--ink:#1f2333;--muted:#6b7183;--line:#e2e5ee;
+  --c1:#2f6fd6;--c2:#6a4fbf;--c3:#178a7a;--accent:var(--c1);
+  --ok:#1f9d55;--okbg:#e6f6ec;--bad:#d64545;--badbg:#fdecec;--soft:#e9effb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito","Noto Sans KR",system-ui,sans-serif;line-height:1.5}
+.ko{font-family:"Noto Sans KR","Nunito",sans-serif}
+header{background:var(--accent);color:#fff;padding:22px 16px 26px}
+header .in,main,footer{max-width:760px;margin:0 auto}
+header h1{margin:0;font-size:1.55rem;font-weight:800}
+header p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+.back{background:rgba(255,255,255,.2);color:#fff;border:0;border-radius:999px;padding:6px 14px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;margin-bottom:10px}
+main{padding:18px 16px 10px}
+.card{background:var(--card);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,30,60,.05)}
+.card h3{margin:0 0 2px;font-size:1.12rem}
+.card h2{margin:0 0 4px}
+.instr{color:var(--muted);font-style:italic;font-size:.86rem;margin-bottom:12px}
+.rule{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:.9rem;margin-bottom:12px}
+label.nm{font-weight:800;display:block;margin-bottom:8px}
+input[type=text],textarea{width:100%;font:inherit;font-size:1rem;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.unit{display:block;width:100%;text-align:left;border:0;cursor:pointer;font:inherit;color:inherit;border-left:8px solid var(--uc);position:relative}
+.unit .tag{color:var(--uc);font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.unit h2{margin:2px 0 4px;font-size:1.3rem}
+.unit .topics{color:var(--muted);font-size:.92rem}
+.bar{height:7px;background:var(--line);border-radius:9px;margin:14px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--uc);border-radius:9px;transition:width .3s}
+.small{font-size:.82rem;color:var(--muted)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
+.tabs button{padding:9px 4px;border-radius:999px;border:2px solid var(--line);background:#fff;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--ink)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs button .dot{color:var(--ok)}
+.tabs button.on .dot{color:#fff}
+.bank{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}
+.flip{border:2px solid var(--line);border-radius:14px;background:#fff;min-height:86px;cursor:pointer;font:inherit;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--ink)}
+.flip .w{font-size:1.2rem;font-weight:700}
+.flip .r{font-size:.78rem;color:var(--muted)}
+.flip .t{font-size:.92rem;font-weight:700;color:var(--accent)}
+.flip.open{background:var(--soft);border-color:var(--accent)}
+.say{border:0;background:none;cursor:pointer;font-size:1rem;padding:2px 6px;border-radius:8px}
+.say:hover{background:var(--soft)}
+.q{border-top:1px solid var(--line);padding:12px 0}
+.q:first-of-type{border-top:0}
+.qn{color:var(--accent);font-weight:800;margin-right:6px}
+.gl{display:block;font-size:.82rem;color:var(--muted);margin-top:2px}
+.opts{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.opt{border:2px solid var(--line);background:#fff;border-radius:11px;padding:7px 14px;font:inherit;font-weight:700;cursor:pointer;color:var(--ink)}
+.opt.right{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.opt.wrong{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.row{display:flex;gap:7px;margin-top:8px;flex-wrap:wrap}
+.row input{flex:1 1 100px;min-width:0}
+.btn{border:0;background:var(--accent);color:#fff;border-radius:11px;padding:9px 16px;font:inherit;font-weight:800;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--accent);border:2px solid var(--line)}
+.fb{font-size:.88rem;margin-top:6px;font-weight:700}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--bad)} .fb.hint{color:var(--muted);font-weight:600}
+input.right{border-color:var(--ok);background:var(--okbg)} input.wrong{border-color:var(--bad);background:var(--badbg)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.match .col{display:flex;flex-direction:column;gap:9px}
+.mi{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px;font:inherit;font-weight:700;font-size:1.02rem;cursor:pointer;color:var(--ink)}
+.mi.sel{border-color:var(--accent);background:var(--soft)}
+.mi.done{border-color:var(--ok);background:var(--okbg);color:var(--ok);cursor:default}
+.mi.shake{animation:sh .35s;border-color:var(--bad)}
+@keyframes sh{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.text p{font-size:1.08rem;line-height:1.9;margin:0 0 12px}
+.gw{border:0;background:none;font:inherit;color:inherit;padding:0;border-bottom:2px dotted var(--accent);cursor:pointer;position:relative}
+.tip{display:inline-block;background:var(--ink);color:#fff;font-family:"Nunito",sans-serif;font-size:.8rem;border-radius:7px;padding:1px 7px;margin-left:4px;vertical-align:middle;line-height:1.5}
+.build{min-height:50px;border:2px dashed var(--line);border-radius:12px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 12px;font:inherit;font-size:1.02rem;cursor:pointer;color:var(--ink)}
+.chip.used{visibility:hidden}
+.build .chip{background:var(--soft);border-color:var(--accent)}
+.clicktext{font-size:1.12rem;line-height:2.4}
+.cw{border:0;background:none;font:inherit;padding:2px 1px;margin:0;border-radius:6px;cursor:pointer;color:inherit}
+.cw.sel{background:#fff2c2}
+.cw.right{background:var(--okbg);color:var(--ok);font-weight:700}
+.cw.wrong{background:var(--badbg);color:var(--bad);text-decoration:line-through}
+.cw.missed{outline:2px solid var(--bad)}
+.model{background:#fbfaf4;border-left:5px solid var(--accent);border-radius:10px;padding:12px 14px;font-size:1.02rem;line-height:1.85}
+.model b{color:var(--accent);display:block;font-family:"Nunito",sans-serif}
+textarea{min-height:200px;resize:vertical;line-height:1.7}
+.checks{list-style:none;padding:0;margin:10px 0}
+.checks li{font-size:.92rem;margin:3px 0;color:var(--muted)}
+.checks li.ok{color:var(--ok);font-weight:700}
+.next{display:block;margin:4px auto 16px}
+.syl{border-collapse:separate;border-spacing:5px;margin:0 auto}.syl th{color:var(--accent);font-size:1.05rem;padding:4px}.sylb{border:2px solid var(--line);background:#fff;border-radius:10px;width:56px;height:58px;font:inherit;font-size:1.25rem;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink);padding:0}.sylb .r{font-family:Nunito,sans-serif;font-size:.72rem;color:var(--accent);min-height:1em}.sylb.open{background:var(--soft);border-color:var(--accent)}@media(max-width:520px){.sylb{width:46px;height:52px;font-size:1.1rem}.syl{border-spacing:3px}}.sect{margin:22px 4px 10px;font-size:1.15rem}footer .author{font-weight:800;color:var(--ink);font-size:.92rem}.tg{color:var(--accent);font-weight:800;text-decoration:none}.hauthor{font-weight:700}.hauthor .tg{color:#fff;text-decoration:underline}footer{text-align:center;font-size:.82rem;color:var(--muted);padding:10px 16px 30px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;font-weight:700;font-size:.9rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+.copybox{margin-top:10px;display:none}
+.donebadge{display:inline-block;background:var(--okbg);color:var(--ok);font-weight:800;font-size:.75rem;border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+@media(max-width:520px){.row .btn{padding:9px 11px;font-size:.88rem}.tabs button{font-size:.78rem}header h1{font-size:1.3rem}.bank{grid-template-columns:repeat(2,1fr)}.text p{font-size:1.02rem}}
+.namecard.empty{border:2px solid var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.namecard .small{margin-top:6px}
+input.need{border-color:#e0453a!important;animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){input.need{animation:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+/* ============ SOZLAMALAR ============ */
+const LEVEL = "Lug'at";
+const BOOK = "«한국어 첫걸음 1A · 어휘» lug'at kitobi asosida";
+const SUB = "한국어 첫걸음 1A · 583 ta so'z · So'z yodlash testlari";
+const AUTHOR = "Tuzuvchi: Iroda Normatova";
+const TG = "with_IrodaKorean";
+const TEACHER = ""; // O'qituvchi ismini shu yerga yozing
+
+/* ============ TOPSHIRIQ YASOVCHILAR ============ */
+const B=(words)=>({type:"bank",title:"So'zlar banki",instr:"So'zni bosing – tarjimasi va o'qilishi chiqadi.",
+  words:words.split(";").map(x=>x.trim()).filter(Boolean).map(x=>{const i=x.indexOf("=");const r=x.slice(i+1).split("|");return[x.slice(0,i).trim(),r[0].trim(),r[1]?r[1].trim():null];})});
+const M=(title,rounds)=>({type:"match",title,instr:"Chap va o'ng tomondagi mos so'zlarni juftlang.",
+  rounds:rounds.map(r=>r.split(";").map(p=>{const i=p.indexOf("=");return[p.slice(0,i).trim(),p.slice(i+1).trim()];}))});
+const C=(title,instr,rule,items)=>({type:"mc",title,instr,rule,items:items.map(([q,gl,o])=>({q,gl,o:o.split("|")}))});
+const F=(title,instr,rule,items)=>({type:"fill",title,instr,rule,items:items.map(([q,a,gl])=>({q,gl,a:a.split("/")}))});
+const T=(items)=>({type:"tf",title:"To'g'ri yoki noto'g'ri?",instr:"Matn bo'yicha belgilang.",items:items.map(([q,a])=>({q,a:!!a}))});
+const O=(items)=>({type:"order",title:"Gap tuzing",instr:"So'zlarni bosib, to'g'ri tartibda gap tuzing.",items:items.map(([gl,w,alt])=>({gl,w:w.split("|"),alt:alt?alt.split(";"):[]}))});
+const X=(title,paras)=>({type:"text",title,instr:"Matnni o'qing. Tagiga chizilgan so'zlarni bosing – tarjimasi chiqadi.",paras});
+const W=(items)=>F("Matndan so'zni toping","Matnlardan mos so'zni topib yozing.","",items.map(([uz,ko])=>[uz,ko]));
+
+const VOC=[{"b": "1A", "n": "한글", "ko": "한글 배우기", "uz": "Hangul alifbosi", "w": [["오", "besh"], ["이", "bu/tish"], ["아야", "voy! (og'riganda)"], ["아이", "bola"], ["오이", "bodring"], ["가수", "qo'shiqchi"], ["고기", "go'sht"], ["구두", "tufli"], ["나라", "davlat"], ["나무", "daraxt"], ["다리", "oyoq"], ["라디오", "radio"], ["머리", "bosh"], ["바나나", "banan"], ["바지", "shim"], ["소", "sigir"], ["아기", "chaqaloq"], ["어머니", "ona"], ["지도", "xarita"], ["모자", "bosh kiyim"], ["아버지", "ota"], ["허리", "bel"], ["지하", "yer osti"], ["야구", "beyzbol"], ["야자수", "palma"], ["이야기", "suhbat"], ["여자", "ayol"], ["벼", "guruch"], ["혀", "til"], ["요가", "yoga"], ["요리", "ovqat pishirish"], ["교수", "professor"], ["유리", "shisha"], ["휴지", "tualet qog'ozi"], ["우유", "sut"], ["카드", "karta"], ["코", "burun"], ["키", "balandlik"], ["타조", "tuyaqush"], ["토마토", "pomidor"], ["투우사", "matador"], ["파리", "Parij"], ["포도", "uzum"], ["우표", "pochta markasi"], ["차", "choy"], ["치마 / 스커트", "yubka"], ["고추", "qalampir"], ["커피", "kofe"], ["코트", "palto"], ["기차표", "poyezd bilet"], ["까치", "zog'cha"], ["꼬리", "dum"], ["코끼리", "fil"], ["따다", "uzmoq"], ["뜨다", "suzmoq"], ["머리띠", "abadok"], ["뿌리", "tomir,ildiz"], ["뼈", "suyak"], ["아빠", "ota"], ["싸다", "arzon"], ["쓰다", "yozmoq/foydalanmoq"], ["아저씨", "ko'chadagi amaki"], ["짜다", "sho'r"], ["찌다", "bug'lamoq"], ["가짜", "qalbaki"], ["개미", "chumoli"], ["배", "qayiq"], ["새", "qush"], ["해", "quyosh"], ["게", "qisqichbaqa"], ["세수", "yuvinish"], ["그네", "arg'imchoq"], ["카메라", "kamera"], ["얘기", "suhbat"], ["예쁘다", "chiroyli"], ["서예", "xattotlik"], ["시계", "soat apparati"], ["과자", "pishiriq"], ["와이셔츠", "ko'ylak"], ["화가", "rassom"], ["사과", "olma"], ["뭐", "nima"], ["줘요", "bering (bermoq)"], ["더워요", "issiq"], ["추워요", "sovuq"], ["돼지", "cho'chqa"], ["왜", "nimaga"], ["웨이터", "ofitsant"], ["스웨터", "svitr"], ["쇠고기", "mol go'shti"], ["외우다", "yodlamoq"], ["회사", "firma"], ["두뇌", "miya"], ["귀", "quloq"], ["쉬다", "dam olmoq"], ["쥐", "sichqon"], ["가위", "qaychi"], ["의사", "doktor"], ["의자", "stul"], ["여의도", "Yoi oroli"], ["회의", "majlis"], ["수박", "tarvuz"], ["책", "kitob"], ["부엌", "uy oshxonasi/kuxnya"], ["밖", "tashqari"], ["돈", "pul"], ["레몬", "limon"], ["신문", "gazeta"], ["우산", "zontik"], ["곧", "yaqinda"], ["밑", "osti"], ["빗", "taroq"], ["옷", "kiyim"], ["낮", "kunduzi"], ["꽃", "gul"], ["빛", "nur"], ["히읗", "h"], ["딸기", "qulupnay"], ["물", "suv"], ["발", "oyoq"], ["연필", "qalam"], ["곰", "ayiq"], ["남자", "erkak"], ["엄마", "ona"], ["컴퓨터", "kompyuter"], ["밥", "qaynatilgan guruch"], ["입", "og'iz"], ["무릎", "tizza"], ["숲", "o'rmon"], ["가방", "sumka"], ["공", "koptok"], ["냉장고", "muzlatkich"], ["창문", "deraza"]]}, {"b": "1A", "n": "1", "ko": "안녕하세요?", "uz": "Salom! Tanishaylik", "w": [["나라", "davlat"], ["중국", "Xitoy"], ["일본", "Yaponiya"], ["미국", "AQSH"], ["한국", "Koreya"], ["프랑스", "Fransiya"], ["독일", "Germaniya"], ["호주", "Avstraliya"], ["영국", "Angliya"], ["빈칸", "bo'sh joy"], ["알맞다", "mos"], ["단어", "so'z"], ["선생님", "o'qituvchi"], ["학생", "o'quvchi"], ["의사", "doktor"], ["회사원", "firma ishchisi"], ["요리사", "oshpaz"], ["기자", "muxbir"], ["가수", "qo'shiqchi"], ["군인", "askar"], ["인사말", "salomlashish gapi"], ["만나다", "uchrashmoq"], ["반갑다", "xursand bo'lmoq"], ["한국말", "koreys tili"], ["그림", "surat (chizilgan)"], ["이야기하다", "suhbatlashmoq"], ["저", "men/anavi"], ["씨", "janob/xonim"], ["네", "ha"], ["주부", "uy bekasi"], ["말하기", "gaplashish"], ["어느", "qaysi"], ["캐나다", "Kanada"], ["국적", "millat"], ["묻다", "so'ramoq"], ["인도", "Hindiston"], ["직업", "kasb"], ["아니요", "yo'q"], ["여러분", "sizlar/azizlar"], ["무엇", "nima"], ["러시아", "Rossiya"], ["파키스탄", "Pokiston"], ["친구", "do'st"], ["명함", "vizitka"], ["이름", "ism"], ["전화번호", "telefon raqam"], ["영어", "ingliz tili"], ["블로그", "internetdagi blog"], ["찾다", "qidirmoq"], ["과제", "topshiriq"], ["문화", "madaniyat"]]}, {"b": "1A", "n": "2", "ko": "이게 뭐예요?", "uz": "Bu nima?", "w": [["책상", "parta"], ["의자", "stul"], ["책", "kitob"], ["공책", "daftar"], ["볼펜", "ruchka"], ["연필", "qalam"], ["가방", "sumka"], ["지우개", "o'chirg'ich"], ["시계", "soat"], ["모자", "bosh kiyim"], ["우산", "soyabon"], ["신문", "gazeta"], ["사전", "lug'at"], ["안경", "ko'zoynak"], ["휴대폰", "telefon"], ["남자친구", "yigit o'rtoq"], ["동전", "tanga"], ["차", "mashina"], ["한국어", "koreys tili"], ["여자 친구", "qiz o'rtoq"], ["뭐", "nima"], ["창문", "deraza"], ["지도", "xarita"], ["필통", "penal/qalamdon"], ["전자사전", "elektron lug'at"], ["한국어로", "koreys tilida"], ["자", "chizg'ich"], ["잡지", "jurnal"], ["지갑", "hamyon"], ["여기 있어요", "marhamat"], ["커피", "kofe"], ["좀", "iltimos"], ["콜라", "kola"], ["주스", "sharbat"], ["교통카드", "transport kartasi"], ["휴지", "salfetka"], ["물", "suv"], ["어서 오세요", "xush kelibsiz"], ["사과", "olma"], ["오렌지", "apelsin"], ["영화", "kino"], ["우유", "sut"], ["바나나", "banan"], ["딸기", "qulupnay"], ["텔레비전", "televizor"], ["방", "xona"], ["서울대학교", "Seul universiteti"], ["제", "mening"], ["침대", "karavot"], ["룸메이트", "xonadosh"], ["에어컨", "konditsioner"], ["물건", "narsa"], ["팀", "jamoa"], ["나누다", "bo'lishmoq"], ["받다", "olmoq"], ["붙이다", "yopishtirmoq"]]}, {"b": "1A", "n": "3", "ko": "학교에 가요", "uz": "Kundalik hayot", "w": [["자다", "uxlamoq"], ["공부하다", "o'qimoq/o'rganmoq"], ["일하다", "ishlamoq"], ["운동하다", "sport bilan shug'ullanmoq"], ["숙제를 하다", "uy vazifa qilmoq"], ["옷을 사다", "kiyim sotib olmoq"], ["영화를 보다", "kino ko'rmoq"], ["친구를 만나다", "do'sti bilan uchrashmoq"], ["태권도를 배우다", "tekvando o'rganmoq"], ["밥을 먹다", "ovqat yemoq"], ["커피를 마시다", "kofe ichmoq"], ["책을 읽다", "kitob o'qimoq"], ["도서관", "kutubxona"], ["집", "uy"], ["백화점", "univermag"], ["시장", "bozor"], ["공원", "park/bog'"], ["커피숍", "kafe"], ["극장", "kinoteatr"], ["학교", "maktab"], ["식당", "oshxona"], ["회사", "firma"], ["지금", "hozir"], ["하다", "qilmoq"], ["쉬다", "dam olmoq"], ["피자", "pitsa"], ["보다", "ko'rmoq"], ["사다", "sotib olmoq"], ["먹다", "yemoq"], ["마시다", "ichmoq"], ["읽다", "o'qimoq"], ["배우다", "o'rganmoq"], ["일본어", "yapon tili"], ["아르바이트하다", "qo'shimcha ish qilmoq"], ["요리", "ovqat pishirish"], ["만나다", "uchrashmoq"], ["오늘", "bugun"], ["그리고", "va"], ["어디", "qayer"], ["고기", "go'sht"], ["프랑스어", "fransuz tili"], ["드라마", "serial/dorama"], ["그럼", "unday bo'lsa"], ["스포츠 센터", "sport markazi"], ["차", "choy"], ["가르치다", "o'qitmoq"], ["언어교육원", "til markazi"], ["불고기", "pulgogi"], ["노래방", "karaoke"]]}, {"b": "1A", "n": "4", "ko": "화장실이 어디에 있어요?", "uz": "Joylashuv", "w": [["공항", "aeroport"], ["우체국", "pochta"], ["대사관", "elchixona"], ["은행", "bank"], ["가게", "magazin"], ["약국", "apteka"], ["병원", "kasalxona"], ["미용실", "sartaroshxona"], ["앞", "oldi"], ["뒤", "orqasi"], ["옆", "yoni"], ["안", "ichi"], ["아래 / 밑", "osti, tagi"], ["위", "usti"], ["인사동", "Insadong"], ["서울타워", "Seul minorasi"], ["명동", "Myongdong"], ["청계천", "Chonkechon"], ["대학로", "Dehangno (Seuldagi teatrlar ko'chasi)"], ["남산", "Nam tog'i"], ["교실", "sinf xona"], ["찻집", "choyxona"], ["서울", "Seul"], ["시내", "shahar markazi"], ["구경하다", "tomosha qilmoq"], ["쇼핑하다", "xarid qilmoq"], ["연극", "teatr"], ["알다", "bilmoq"], ["어머니", "ona"], ["아버지", "ota"], ["잘 지내다", "ishlari yaxshi bo'lmoq"], ["기숙사", "yotoqxona"], ["사진", "rasm"], ["매일", "har kuni"], ["그", "u"], ["반", "sinf"], ["사랑하다", "sevmoq"], ["서점", "kitob do'koni"], ["빵집", "nonvoyxona"], ["화장실", "hojatxona"], ["음식", "ovqat/taom"], ["기념품", "suvenir"], ["그림", "rasm"]]}, {"b": "1A", "n": "5", "ko": "몇 시에 일어나요?", "uz": "Sana va kun tartibi", "w": [["숫자", "raqam,son"], ["월요일", "dushanba"], ["화요일", "seshanba"], ["수요일", "chorshanba"], ["목요일", "payshanba"], ["금요일", "juma"], ["토요일", "shanba"], ["일요일", "yakshanba"], ["주말", "hafta oxiri"], ["날짜", "sana"], ["요일", "hafta kuni"], ["며칠", "qaysi kun"], ["시험", "imtixon"], ["언제", "qachon"], ["무슨", "qaysi"], ["생일", "tug'ilgan kun"], ["하고", "bilan"], ["크리스마스", "krismas"], ["파티", "bazm"], ["시간", "vaqt"], ["미안하다", "uzr so'ramoq"], ["약속", "uchrashuv/vada"], ["같이", "birga"], ["어제", "kecha"], ["코엑스몰", "Seuldagi savdo markazi"], ["카드", "karta"], ["선물", "sovg'a"], ["세수하다", "yuvinmoq"], ["이를 닦다", "tish yuvmoq"], ["거기", "u joy"], ["산책하다", "sayr qilmoq"], ["사진을 찍다", "rasm olmoq"], ["누구", "kim"], ["혼자", "yolg'iz"], ["끝나다", "tugamoq"], ["강남역", "Gangnam bekati"], ["그래서", "shuning uchun"], ["내일", "ertaga"], ["스케줄", "kun tartibi"], ["지난주", "o'tgan hafta"], ["양력", "quyosh kalendari"], ["음력", "oy kalendari"], ["설날", "yangi yil"], ["세배를 하다", "ta'zim qilmoq (Yangi yilda)"], ["떡국", "tokkuk"], ["추석", "hosil bayrami/shukronalik kuni"], ["차례를 지내다", "marosim o'tkazmoq"], ["송편", "guruchli pishiriq"]]}, {"b": "1A", "n": "6", "ko": "이거 얼마예요?", "uz": "Xarid", "w": [["샌드위치", "sendvich"], ["스파게티", "spagetti"], ["피자", "pitsa"], ["햄버거", "gamburger"], ["귤", "mandarin"], ["딸기", "qulupnay"], ["사과", "olma"], ["수박", "tarvuz"], ["앉다", "o'tirmoq"], ["주다", "bermoq"], ["잠깐만", "biroz"], ["기다리다", "kutmoq"], ["빵", "non"], ["몇", "qancha/necha"], ["아이스크림", "muzqaymoq"], ["주스", "sharbat"], ["녹차", "ko'k choy"], ["콜라", "kola"], ["메뉴", "menyu"], ["좋아하다", "yaxshi ko'rmoq"], ["우동", "udon taomi"], ["맥주", "pivo"], ["물건", "narsa"], ["개수", "sanoq"], ["그래요", "shunday"], ["여기요", "kechirasiz (birovni chaqirganda)"], ["맛있다", "mazali"], ["좋다", "yaxshi"], ["싸다", "arzon"], ["길", "yo'l"], ["복잡하다", "tiqilinch"], ["노래", "qo'shiq"], ["아리랑", "koreya folkor musiqasi"], ["바지", "shim"], ["운동화", "krossovka"], ["아저씨", "amaki"], ["모두", "hammasi"], ["또", "yana"], ["키위", "kivi"], ["파인애플", "ananas"], ["박스", "quti"], ["멜론", "qovun"], ["과자", "pishiriq"], ["달걀", "tuxum"], ["휴지", "salfetka"], ["케이크", "tort"], ["아이스커피", "muzli kofe"], ["에스프레소", "espresso"], ["돈가스", "kotlet"], ["점심", "tushlik"], ["급", "daraja"], ["물건", "narsa"], ["팔다", "sotmoq"], ["인치", "inch (o'lchov birlik)"], ["아주", "juda"], ["리모컨", "pult"], ["깨끗하다", "toza"], ["많다", "ko'p"], ["권", "kitoblarga ‒ta"], ["전화하다", "telefon qilmoq"], ["비싸다", "qimmat"], ["깎아 주다", "arzon qilmoq"], ["백김치", "oq kimchi"], ["깍두기", "rediskali kimchi"], ["오이김치", "bodrng kimchi"], ["물김치", "suvli kimchi"], ["이런", "bunday"], ["김치볶음밥", "qovurilgan guruch"], ["김치전", "kimchi quymoq"], ["얼마", "qancha"], ["십 원", "10 von"], ["오십 원", "50 von"], ["백 원", "100 von"], ["오백 원", "500 von"], ["천 원", "1000 von"], ["오천 원", "5000 von"], ["만 원", "10.000 von"], ["오만 원", "50.000 von"]]}, {"b": "1A", "n": "7", "ko": "날씨가 어때요?", "uz": "Ob-havo", "w": [["흐리다", "bulutli"], ["맑다", "havo ochiq"], ["덥다", "issiq"], ["춥다", "sovuq"], ["따뜻하다", "iliq"], ["시원하다", "salqin"], ["비가 오다", "yomg'ir yog'moq"], ["눈이 오다", "qor yog'moq"], ["계절", "fasl"], ["봄", "bahor"], ["여름", "yoz"], ["가을", "kuz"], ["겨울", "qish"], ["쉽다", "oson"], ["어렵다", "qiyin"], ["맵다", "achchiq"], ["가볍다", "yengil"], ["무겁다", "og'ir"], ["불규칙", "qoidaga tushmaslik"], ["날씨", "ob havo"], ["어때요?", "qanday?"], ["재미있다", "qiziqarli"], ["동생", "uka"], ["떡볶이", "tokpukki"], ["재미없다", "qiziq emas"], ["도쿄", "Tokyo"], ["조심해서 오세요", "ehtiyot bo'lib keling"], ["런던", "London"], ["싱가포르", "Singapur"], ["모스크바", "Moskva"], ["카이로", "Qohira"], ["시드니", "Sidney"], ["뉴욕", "Nyu York"], ["베이징", "Pekin"], ["어떻다", "qanday"], ["파리", "Parij"], ["요즘", "shu kunlarda"], ["쉬는 시간", "dam olish vaqti"], ["이야기하다", "suhbatlashmoq"], ["고향", "vatan"], ["스키장", "chang'i kompleksi"], ["단풍", "kuzgi qizil barglar"], ["수영장", "suzish kompleksi"], ["꽃", "gul"], ["바다", "dengiz"], ["생선", "baliq"], ["부산", "Pusan"], ["질문", "savol"], ["작년", "o'tgan yili"], ["브라질", "Braziliya"], ["에서", "…dan"], ["브라질리아", "Brazilia"], ["항상", "doim"], ["처음", "ilk bor"], ["하늘", "osmon"], ["눈사람", "qor odam"], ["만들다", "tayyorlamoq"], ["필요하다", "zarur bo'lmoq"], ["놓다", "qo'ymoq"], ["각각", "har bir"], ["태국", "Tailand"], ["수영하다", "suzmoq"], ["망고", "mango"], ["선글라스", "ko'zoynak (quyosh)"], ["부채", "yelpig'ich"], ["슬리퍼", "shippak/tapochka"], ["삼계탕", "samketang"], ["들", "…lar"]]}, {"b": "1A", "n": "8", "ko": "같이 영화 볼까요?", "uz": "Bo'sh vaqt va taklif", "w": [["골프", "golf"], ["자전거", "velosiped"], ["게임", "o'yin"], ["테니스", "tennis"], ["농구", "basketbol"], ["피아노", "pianino"], ["당구", "billiard"], ["스키", "chang'i"], ["기타", "gitara"], ["스케이트", "skeyt"], ["축구", "futbol"], ["치다", "o'ynamoq,chalmoq"], ["타다", "minmoq/uchmoq"], ["하다", "qilmoq"], ["낮잠을 자다", "kunduzgi uyqu uxlamoq"], ["등산을 하다", "tog'ga chiqmoq"], ["산책을 하다", "sayr qilmoq"], ["여행을 하다", "sayohat qilmoq"], ["노래방에 가다", "karaokega bormoq"], ["찜질방에 가다", "saunaga bormoq"], ["걷다", "yurmoq"], ["버스", "avtobus"], ["타다", "minmoq"], ["걸어서 가다", "piyoda yurib bormoq"], ["음악", "musiqa"], ["듣다", "eshitmoq"], ["뉴스", "yangilik"], ["라디오", "radio"], ["잘", "yaxshi"], ["생활", "hayot"], ["조금", "biroz"], ["심심하다", "zerikarli"], ["한강", "Han daryosi"], ["그런데", "lekin"], ["어떻게", "qanday qilib"], ["가깝다", "yaqin"], ["관악산", "Gvanak tog'i"], ["시청", "shahar hokimiyati (meriya)"], ["정말", "haqiqatdan"], ["많다", "ko'p"], ["자주", "tez tez"], ["그래요", "shunday/rostdan"], ["다음", "kelasi"], ["피곤하다", "charchamoq"], ["크다", "katta"], ["식혜", "guruchli ichimlik"], ["저기", "anavi yer"], ["수업", "dars"], ["오후", "tushdan so'ng"], ["운동장", "sport maydoni"], ["번", "nomer"], ["보통", "odatda"], ["미팅", "uchrashuv"], ["소개하다", "tanishtirmoq"], ["소개팅", "tanishuv uchrashuvi"], ["웃어른", "katta odam"], ["선을 보다", "sovchilar orqali uchrashmoq"]]}, {"b": "1B", "n": "9", "ko": "우리 가족을 소개할게요", "uz": "Oila va hurmat shakllari", "w": [["할머니", "buvi"], ["할아버지", "buva"], ["어머니", "ona"], ["아버지", "ota"], ["누나", "opa(o'g'il bolalar uchun)"], ["형", "aka (o'g'il bolalarga)"], ["언니", "opa (qizlarga)"], ["오빠", "aka(qizlarga)"], ["여동생", "singil"], ["남동생", "uka"], ["아내", "xotin"], ["남편", "er"], ["딸", "qiz farzand"], ["아들", "o'g'il farzand"], ["열", "10"], ["스물", "20"], ["서른", "30"], ["마흔", "40"], ["쉰", "50"], ["예순", "60"], ["일흔", "70"], ["여든", "80"], ["아흔", "90"], ["백", "100"], ["이름 / 성함", "ism"], ["집 / 댁", "uy"], ["사람 / 명 / 분", "odam"], ["나이 / 연세", "yosh"], ["있다 / 계시다", "bor bo'lmoq"], ["먹다 / 마시다 / 드시다", "yemoq"], ["자다 / 주무시다", "uxlamoq"], ["상자", "quti"], ["꺼내다", "sug'urmoq"], ["운전", "haydamoq"], ["수학", "matematika"], ["인사하다", "salomlashmoq"], ["이쪽", "bu"], ["한테서", "-dan"], ["뭘요", "unchalik emas"], ["동아리", "to'garak"], ["같은 과", "bir fakultet (yo'nalish)"], ["윗사람", "o'zidan katta odam"], ["역사", "tarix"], ["이분", "bu kishi"], ["우리", "biz/bizning"], ["반 친구", "sinfdosh"], ["다니다", "qatnamoq"], ["친절하다", "mehribon"], ["사장님", "direktor"], ["전에", "oldin"], ["멋있다", "kelishgan"], ["부모님", "ota-ona"], ["미인", "chiroyli ayol"], ["대학교", "universitet"], ["신문사", "gazeta tahririyati"], ["중학교", "o'rta maktab"], ["공손하다", "kamtar"], ["강아지", "kuchukcha"], ["가족사진", "oilaviy rasm"], ["웃다", "kulmoq"], ["취미", "hobby"], ["아기", "chaqaloq"], ["태어나다", "tug'ilmoq"], ["다른 나라", "boshqa davlat"], ["되다", "bo'lmoq"]]}, {"b": "1B", "n": "10", "ko": "내일 몇 시에 만날까요?", "uz": "Vaqt va kun tartibi", "w": [["새벽", "sahar"], ["아침", "ertalab"], ["낮", "kunduzi"], ["저녁", "kechki payt"], ["밤", "tun"], ["오전", "obeddan oldin"], ["오후", "obeddan keyin"], ["일어나다", "uyg'onmoq"], ["버스를 기다리다", "avtobus kutmoq"], ["운전하다", "mashina minmoq"], ["버스를 타다", "avtobusga minmoq"], ["세수하다", "yuvinmoq"], ["청소하다", "uy tozalamoq"], ["회의하다", "majliz o'tkizmoq"], ["빨래하다", "kir yuvmoq"], ["전화하다", "telefon qilmoq"], ["컴퓨터를 하다", "kompyuterda ishlamoq"], ["요리하다", "ovqat pishirmoq"], ["샤워하다", "dush qabul qilmoq"], ["시", "soat"], ["분", "minut"], ["반", "yarim"], ["쯤", "taxminan"], ["아침", "nonushta"], ["저녁", "kechki ovqat"], ["수업을 하다", "dars qilmoq"], ["시험을 보다", "imtixon topshirmoq"], ["그리다", "rasm chizmoq"], ["이번", "bu safar"], ["방학", "ta'til"], ["조금 후", "birozdan so'ng"], ["주말 잘 보내다", "dam olish kunini yaxshi o'tkazmoq"], ["데이트하다", "uchrashuvga chiqmoq"], ["강남", "Gangnam"], ["여의도", "Yoyido"], ["박물관", "muzey"], ["연습", "mashq"], ["인천", "Inchon"], ["전통", "milliy"], ["이메일", "e-mail"], ["출입국관리사무소", "muhojirlar markazi"], ["그렇지만", "lekin"]]}, {"b": "1B", "n": "11", "ko": "몸이 안 좋아요", "uz": "Salomatlik", "w": [["머리", "bosh"], ["목", "bo'yin"], ["어깨", "yelka"], ["팔", "qo'l"], ["손", "qo'l"], ["가슴", "ko'krak"], ["배", "qorin"], ["허리", "bel"], ["다리", "oyoq"], ["무릎", "tizza"], ["발", "oyoq"], ["눈", "ko'z"], ["코", "burun"], ["입", "og'iz"], ["귀", "quloq"], ["얼굴", "yuz,aft,bet"], ["기침을 하다", "yo'talmoq"], ["목이 아프다", "tomog'I og'rimoq"], ["열이 나다 (있다)", "isitma chiqmoq"], ["콧물이 나다", "burun oqmoq"], ["바쁘다", "band bo'lmoq"], ["배고프다", "qorni och bo'lmoq"], ["예쁘다", "chiroyli"], ["편지", "xat"], ["쓰다", "yozmoq"], ["나쁘다", "yomon"], ["담배를 피우다", "sigaret chekmoq"], ["알겠다", "tushunarli"], ["늦다", "kechikmoq"], ["감기에 걸리다", "shamollamoq"], ["유행이다", "urf bo'lmoq, mashhur bo'lmoq"], ["약", "dori"], ["푹 쉬다", "miriqib dam olmoq"], ["말(을) 하다", "gapirmoq"], ["오래", "uzoq vaqt"], ["목욕하다", "hammom qilmoq"], ["술", "spirtli ichimlik"], ["환자", "bemor"], ["의사", "doktor"], ["씻다", "yuvmoq"], ["따뜻한 물", "iliq suv"], ["얼음물", "muzli suv"], ["손님", "mehmon"], ["내년", "kelasi yil"], ["결혼하다", "turmush qurmoq"], ["괜찮다", "durust bo'lmoq"], ["다행이다", "hudoga shukur"], ["너무", "juda, haddan tashqari"], ["무리하다", "ko'p ishlab toliqmoq"], ["생신", "tug'ilgan kun (hurmat)"], ["리포트", "hisobot, referat"], ["내다", "topshirmoq"], ["알람", "budilnik"], ["끄다", "o'chirmoq"], ["걱정", "havotir"], ["발음", "talaffuz"], ["피시방", "komputer xona"], ["싸우다", "urishmoq"], ["이렇게", "bunday"], ["휴대전화 사용 금지", "telefondan foydalanish taqiqlanadi"], ["금연", "chekish taqiqlanadi"], ["주차금지", "mashina qo'yish taqiqlanadi"], ["코 감기", "burun shamollashi"], ["목 감기", "tomoq shamollashi"], ["몸살 감기", "tana shamollashi"], ["파", "piyoz"], ["붙이다", "yopishtirmoq"], ["소금물", "tuzli suv"], ["헹구다", "og'izni chaymoq"], ["무즙", "rediska suvi"], ["마사지하다", "massaj qilmoq"]]}, {"b": "1B", "n": "12", "ko": "지금 통화 괜찮아요?", "uz": "Telefon", "w": [["전화번호", "telefon raqam"], ["문자를 받다", "sms olmoq"], ["문자를 보내다", "sms jo'natmoq"], ["전화를 받다", "qo'ng'iroq kelmoq"], ["전화(를) 하다", "telefon qilmoq"], ["그렇습니다", "shunday"], ["오랜만이에요", "ko'rishmaganimizga ancha bo'ldi"], ["일", "ish"], ["사무실", "ofis"], ["뭘요", "muammo yo'q"], ["맛없다", "bemaza"], ["왜", "nimaga"], ["조금 전", "biroz oldin"], ["늦잠", "uxlab qolmoq"], ["여행사", "sayohat agentligi"], ["아까", "biroz oldin"], ["그럼요", "albatta"], ["이따", "keyinroq"], ["다른", "boshqa"], ["다", "hammasi"], ["장소", "joy"], ["몰라서", "bilmaganim uchun"], ["도둑이 들다", "o'g'ri kirmoq"], ["사고가 나다", "avariya hosil bo'lmoq"], ["불이 나다", "olov chiqmoq"]]}, {"b": "1B", "n": "13", "ko": "지하철로 어떻게 가요?", "uz": "Transport", "w": [["버스", "avtobus"], ["기차", "poyezd"], ["비행기", "samalyot"], ["배", "qayiq/kema"], ["택시", "taksi"], ["자전거", "velosiped"], ["지하철", "metro"], ["오토바이", "mototsikl"], ["타다", "minmoq"], ["갈아타다", "almashib chiqmoq"], ["내리다", "tushmoq"], ["버스 정류장", "avtobus bekati"], ["기차역", "poyezd bekati"], ["고속 버스 터미널", "tez yurar avtobi terminali"], ["지하철역", "metro bekati"], ["닫다", "yopmoq"], ["돕다", "yordam bermoq"], ["칠판", "doska"], ["울다", "yig'lamoq"], ["가위 바위 보", "tosh-qaychi-qog'oz (o'yin)"], ["쭉", "tog'riga"], ["서울역", "seul bekati"], ["한국말", "koreys tili"], ["아직", "hali ham"], ["세우다", "to'xtamoq"], ["신호등", "svetofor"], ["정문", "asosiy darvoza"], ["호선", "metro liniyasi"], ["얼마 전", "bir necha vaqt oldin"], ["구급차", "tez yordam mashinasi"], ["다음날", "keyingi kun"], ["편리하다", "qulay"], ["사용하다", "foydalanmoq"], ["요금", "to'lov"], ["안에", "ichida"], ["그러면", "u holda"], ["깎다", "chegirma qilmoq, qirqmoq"], ["나", "yo/yoki"]]}, {"b": "1B", "n": "14", "ko": "이 옷 어때요?", "uz": "Kiyim va sifatlar", "w": [["셔츠", "ko'ylak"], ["모자", "bosh kiyim"], ["바지", "shim"], ["치마 / 스커트", "yubka"], ["코트", "palto"], ["원피스", "ko'ylak"], ["구두", "tufli"], ["운동화", "krasovka"], ["양복", "kostyum"], ["입다", "kiymoq"], ["신다", "(poyabzal) kiymoq"], ["쓰다", "bosh kiyim kiymoq"], ["크다", "katta"], ["작다", "kichkina"], ["길다", "uzun"], ["짧다", "kalta"], ["높다", "baland"], ["낮다", "past"], ["비싸다", "qimmat"], ["싸다", "arzon"], ["불편하다", "noqulay"], ["편하다", "qulay"], ["두껍다", "qalin"], ["얇다", "yupqa"], ["알다", "bilmoq"], ["만들다", "tayyorlamoq"], ["살다", "yashamoq"], ["놀다", "o'ynamoq"], ["팔다", "sotmoq"], ["열다", "ochmoq"], ["어떤", "qanday"], ["유행이다", "urf bo'lmoq, mashhur bo'lmoq"], ["무섭다", "qo'rqinchli"], ["슬프다", "g'amgin"], ["키", "bo'y"], ["청바지", "ko'k shim"], ["체격이 좋다", "qomati yaxshi bo'lmoq"], ["마음", "qalb"], ["미니스커트", "mini yubka"], ["선물하다", "sovg'a qilmoq"], ["보내다", "jo'natmoq"], ["드리다", "bermoq(hurmat)"], ["한번", "bir marta"], ["막걸리", "guruchli ichimlik"], ["도시", "shahar"], ["한복", "koreya milliy libosi"], ["티셔츠", "futbolka"], ["스타일", "stil"], ["단순하다", "oddiy"], ["사탕", "shirinlik"], ["수료식", "yopilish marosimi"], ["목도리", "sharf"], ["귀걸이", "zirak"], ["기쁘다", "hursand bo'lmoq"], ["하다", "qilmoq/o'ramoq(sharf)"], ["가지다", "olmoq"], ["모르겠어요", "bilmayman"], ["축하", "tabriklash"], ["새", "yangi"], ["놀라다", "hayron bo'lmoq"], ["먼저", "birinchi navbatta"], ["묻다", "so'ramoq"]]}, {"b": "1B", "n": "15", "ko": "방학에 제주도에 가고 싶어요", "uz": "Sayohat", "w": [["돈을 바꾸다", "pul almashtirmoq"], ["비행기표를 예매하다", "samalyot biletini zakaz qilmoq"], ["여권을 만들다", "passport tayyorlamoq"], ["호텔을 예약하다", "mehmonxona bron qilmoq"], ["도착하다", "yetib bormoq"], ["돌아오다", "qaytib kelmoq"], ["여행하다", "sayohat qilmoq"], ["출발하다", "jo'nab ketmoq"], ["경치가 아름답다", "tabiati chiroyli"], ["맛있는 음식이 많다", "mazali ovqatlari ko'p"], ["물건 값이 싸다", "maxsulot narxi arzon"], ["구경거리가 많다", "tomosha joylari ko' p"], ["사람도 없고 조용하다", "odam yo'q,tinch"], ["반지", "uzuk"], ["프러포즈", "turmush qurishni taklif qilish"], ["날", "kun"], ["해운대", "sohil"], ["떠나다", "tashlab ketmoq"], ["안동", "andong"], ["찜닭", "dimlangan tovuq"], ["평창", "joy nomi"], ["즐겁다", "zavqli"], ["휴가", "ta'til"], ["야구 경기", "beyzbol o'yini"], ["야구장", "beyzbol maydoni"], ["말", "ot, gap"], ["닭갈비", "ovqat"], ["춘천", "joy nomi"], ["곳", "joy"], ["신혼여행", "asal oyi"], ["미술관", "san'at galareyasi"], ["남이섬", "joy nomi"], ["섬", "orol"], ["삼악산", "Samak tog'i"], ["올라가다", "ko'tarilmoq"], ["보이다", "ko'rinmoq"], ["막국수", "ovqat"], ["질문", "savol"], ["용인", "joy nomi"]]}, {"b": "1B", "n": "16", "ko": "토요일에 같이 밥 먹을까요?", "uz": "Taklif va mehmondorchilik", "w": [["계획하다", "reja qilmoq"], ["선물하다", "sovg'a qilmoq"], ["식사하다", "ovqatlanmoq"], ["연락하다", "telefon qilmoq"], ["준비하다", "tayyorlanmoq"], ["초대하다", "taklif qilmoq"], ["축하하다", "tabriklamoq"], ["늦게", "kech"], ["많이", "ko'p"], ["빨리", "tez"], ["열심히", "tirishib, astoydil"], ["일찍", "vaqtli,erta"], ["잘", "yaxshi"], ["조금", "bir oz"], ["천천히", "sekin sekin"], ["음료수", "salqin ichimlik"], ["별일", "alohida gap, muhim ish"], ["사 가다", "sotib olib bormoq"], ["이사를 하다", "uy ko'chmoq"], ["휴일", "dam olish kuni"], ["돈을 찾다", "pul olmoq"], ["팝콘", "pop corn"], ["춤을 추다", "raqs tushmoq"], ["들어오다", "kirib kelmoq"], ["아니에요", "unday emas"], ["곧", "tez orada"], ["상대방", "suhbatdosh"], ["시간을 보내다", "vaqt o'tkazmoq"], ["참", "aytgancha"], ["몰라요", "bilmayman"], ["이메일 주소", "email address"], ["놀이", "o'yin"], ["세계", "dunyo"], ["답장", "javob xat"], ["세제", "poroshok"], ["부자", "boy"]]}];
+function shf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const U=[];const PUZ=[];
+function pick(arr,n,excl){const r=shf(arr.filter(x=>!excl(x)));return r.slice(0,n);}
+VOC.filter(L=>L.b==="1A").forEach((L,idx)=>{
+  const W=L.w.filter(w=>w[0]&&w[1]);
+  const uniqBy=(k)=>{const seen=new Set();return W.filter(w=>{if(seen.has(w[k]))return false;seen.add(w[k]);return true;});};
+  const bank={type:"bank",title:`So'zlar (${W.length} ta)`,instr:"So'zni bosing – ma'nosi va o'qilishi chiqadi. Avval hammasini ko'rib chiqing, keyin testlarga o'ting.",words:W.map(w=>[w[0],w[1],null])};
+  const mean=C("Ma'nosini toping","Koreyscha so'zning o'zbekcha ma'nosini tanlang.","",shf(uniqBy(1)).map(w=>{const o=pick(uniqBy(1),2,x=>x[1]===w[1]||x[0]===w[0]).map(x=>x[1]);return [w[0],"",[w[1],...o].join("|")];}));
+  const kor=C("Koreyschasini toping","O'zbekcha ma'noga mos koreyscha so'zni tanlang.","",shf(uniqBy(0)).map(w=>{const o=pick(uniqBy(0),2,x=>x[0]===w[0]||x[1]===w[1]).map(x=>x[0]);return [w[1],"",[w[0],...o].join("|")];}));
+  const wr=shf(uniqBy(0).filter(w=>!/[\/(]/.test(w[0])&&uniqBy(0).filter(x=>x[1]===w[1]).length===1)).slice(0,10);
+  const tasks=[kor];
+  if(wr.length>=3)tasks.push(F("Koreyscha yozing","O'zbekcha ma'nosiga qarab so'zni koreys harflarida yozing. Qiynalsangiz «Yordam» tugmasini bosing.","",wr.map(w=>[w[1],w[0]])));
+  const pool=shf(uniqBy(0));const seenU=new Set();const mp=pool.filter(w=>{if(seenU.has(w[1]))return false;seenU.add(w[1]);return true;});
+  const rounds=[];for(let i=0;i+6<=mp.length&&rounds.length<3;i+=6)rounds.push(mp.slice(i,i+6).map(w=>[w[0],w[1]]));
+  const match={type:"match",title:"So'z va ma'nosini juftlang",instr:"Chap va o'ng tomondagi mos juftlarni bosing.",rounds};
+  const isH=L.n==="한글";
+  U.push({ko:L.ko,uz:L.uz,label:isH?"Hangul":`${L.n}-dars`,tag:isH?`${L.b} · 한글 배우기`:`${L.b} · ${L.n}-dars · 제${L.n}과`,section:null,topics:`${W.length} ta so'z · Ma'nosi · Koreyschasi · Yozish · Juftlash`,
+    vocab:[bank],reading:[mean],grammar:tasks,writing:[match]});
+});
+
+
+const TABS = [["vocab","So'zlar"],["reading","Ma'nosi"],["grammar","Koreyschasi"],["writing","Juftlash"]];
+const COLORS=["#2f6fd6","#6a4fbf","#178a7a","#c2581c","#b03a6f"];
+U.forEach((u,i)=>{if(PUZ[i])u.vocab.splice(2,0,PUZ[i]);});
+const UNITS=U.map((u,i)=>Object.assign(u,{id:"u"+(i+1),num:i+1,color:COLORS[i%COLORS.length]}));
+
+/* ============ SAQLASH ============ */
+const KEY="korean-hw-iroda-cglugat1a-v1";
+let S={name:"",done:{},score:{},text:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s)S=Object.assign(S,s);}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+/* ============ YORDAMCHILAR ============ */
+const $=(s,r=document)=>r.querySelector(s);
+const el=(t,a={},...k)=>{const e=document.createElement(t);for(const[n,v]of Object.entries(a)){if(n==="class")e.className=v;else if(n==="html")e.innerHTML=v;else if(n.startsWith("on"))e.addEventListener(n.slice(2),v);else e.setAttribute(n,v);}k.flat().forEach(c=>{if(c!=null)e.append(c.nodeType?c:document.createTextNode(c));});return e;};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const norm=s=>s.replace(/[\s.?!,。~·]/g,"").trim();
+const isKo=s=>/[가-힣]/.test(s);
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),1800);}
+function speak(){}
+function sayBtn(txt){return el("button",{class:"say",title:"Tinglash","aria-label":"Tinglash",onclick:e=>{e.stopPropagation();speak(txt);}},"🔊");}
+
+/* Romanizatsiya (soddalashtirilgan) */
+const RI=["g","kk","n","d","tt","r","m","b","pp","s","ss","","j","jj","ch","k","t","p","h"];
+const RM=["a","ae","ya","yae","eo","e","yeo","ye","o","wa","wae","oe","yo","u","wo","we","wi","yu","eu","ui","i"];
+const RF=["","k","k","k","n","n","n","t","l","k","m","l","l","l","p","l","m","p","p","t","t","ng","t","t","k","t","p","t"];
+const RL=["","g","kk","ks","n","nj","nh","d","r","lg","lm","lb","ls","lt","lp","lh","m","b","bs","s","ss","ng","j","ch","k","t","p",""];
+function roman(str){let out="",ch=[...str];for(let i=0;i<ch.length;i++){const c=ch[i].charCodeAt(0);if(c<0xAC00||c>0xD7A3){out+=ch[i];continue;}
+  const n=c-0xAC00,ini=Math.floor(n/588),med=Math.floor((n%588)/28),fin=n%28;let syl=(i===0||!isKo(ch[i-1])?(ini===5?"r":RI[ini]):RI[ini])+RM[med];
+  const nx=ch[i+1]?ch[i+1].charCodeAt(0):0;const nextVowelStart=nx>=0xAC00&&nx<=0xD7A3&&Math.floor((nx-0xAC00)/588)===11;
+  syl+= fin? (nextVowelStart&&fin!==21?RL[fin]:RF[fin]) :"";out+=syl;}return out;}
+
+function taskList(u){const l=[];for(const[t]of TABS){if(t==="writing"&&!Array.isArray(u.writing)){l.push(u.id+"-writing-1");l.push(u.id+"-writing-3");}else u[t].forEach((x,i)=>{if(x.type!=="text"&&x.type!=="bank")l.push(`${u.id}-${t}-${i}`);});}return l;}
+function unitProgress(u){const l=taskList(u);return[l.filter(k=>S.done[k]).length,l.length];}
+function tabDone(u,t){const l=taskList(u).filter(k=>k.startsWith(`${u.id}-${t}-`));return l.length&&l.every(k=>S.done[k]);}
+function markDone(key,score,total){if(!S.done[key]){S.done[key]=true;if(score!=null)S.score[key]=[score,total];save();toast("✅ Topshiriq bajarildi!");refreshTabs();}}
+
+/* ============ TOPSHIRIQ TURLARI ============ */
+function card(t,instr,rule){const c=el("div",{class:"card"},el("h3",{class:isKo(t)?"ko":""},t));if(instr)c.append(el("div",{class:"instr"},instr));if(rule)c.append(el("div",{class:"rule",html:rule}));return c;}
+
+function rBank(x){const c=card(x.title,x.instr);const g=el("div",{class:"bank"});
+  x.words.forEach(([w,t,rm])=>{const b=el("div",{class:"flip",role:"button",tabindex:"0"});
+    const draw=()=>{b.innerHTML="";b.append(el("span",{class:"w ko"},w));if(b.classList.contains("open"))b.append(el("span",{class:"r"},rm||roman(w)),el("span",{class:"t"},t));};
+    b.onclick=()=>{b.classList.toggle("open");draw();};b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();b.click();}};draw();g.append(b);});
+  c.append(g);return c;}
+
+function rMatch(x,key){const c=card(x.title,x.instr);let r=0,errors=0,total=0;const box=el("div");c.append(box);
+  x.rounds.forEach(rd=>total+=rd.length);
+  const draw=()=>{box.innerHTML="";if(r>=x.rounds.length){box.append(el("div",{class:"fb ok"},`🎉 Barakalla! Xatolar: ${errors}`),el("button",{class:"btn ghost",style:"margin-top:8px",onclick:()=>{r=0;errors=0;draw();}},"Qaytadan"));return;}
+    const rd=x.rounds[r];box.append(el("div",{class:"small",style:"margin-bottom:6px"},`${r+1}-bosqich / ${x.rounds.length}`));
+    let sel=null,left=rd.length;const L=el("div",{class:"col"}),R=el("div",{class:"col"});
+    const L2=shuffle(rd.map((p,i)=>({t:p[0],i}))),R2=shuffle(rd.map((p,i)=>({t:p[1],i})));
+    const mk=(o,side)=>{const b=el("button",{class:"mi"+(isKo(o.t)?" ko":"")},o.t);b.onclick=()=>{if(b.classList.contains("done"))return;
+      if(isKo(o.t))speak(o.t);
+      if(!sel||sel.side===side){if(sel)sel.b.classList.remove("sel");sel={b,o,side};b.classList.add("sel");return;}
+      if(sel.o.i===o.i){sel.b.classList.remove("sel");sel.b.classList.add("done");b.classList.add("done");sel=null;if(--left===0){r++;setTimeout(()=>{if(r>=x.rounds.length)markDone(key,Math.max(0,total-errors),total);draw();},450);}}
+      else{errors++;[b,sel.b].forEach(z=>{z.classList.remove("sel");z.classList.add("shake");setTimeout(()=>z.classList.remove("shake"),400);});sel=null;}};return b;};
+    L2.forEach(o=>L.append(mk(o,"L")));R2.forEach(o=>R.append(mk(o,"R")));box.append(el("div",{class:"match"},L,R));};
+  draw();return c;}
+
+function qhead(i,q,gl){const d=el("div",{},el("span",{class:"qn"},i+1),el("span",{class:isKo(q)?"ko":""},q));if(gl)d.append(el("span",{class:"gl"},gl));return d;}
+
+function rMC(x,key){const c=card(x.title,x.instr,x.rule);let right=0,first=0;
+  x.items.forEach((it,i)=>{const q=el("div",{class:"q"},qhead(i,it.q,it.gl));const o=el("div",{class:"opts"});let tried=false;
+    shuffle(it.o.map((t,j)=>({t,j}))).forEach(({t,j})=>{const b=el("button",{class:"opt"+(isKo(t)?" ko":"")},t);b.onclick=()=>{if(j===0){b.classList.add("right");o.querySelectorAll("button").forEach(z=>z.disabled=true);if(isKo(t)&&t.length>3)speak(t);if(!tried)first++;if(++right===x.items.length)markDone(key,first,x.items.length);}else{b.classList.add("wrong");b.disabled=true;tried=true;}};o.append(b);});
+    q.append(o);c.append(q);});return c;}
+
+function rTF(x,key){const c=card(x.title,x.instr);let right=0,first=0;
+  x.items.forEach((it,i)=>{const q=el("div",{class:"q"},qhead(i,it.q));const o=el("div",{class:"opts"});let tried=false;
+    [["To'g'ri ✓",true],["Noto'g'ri ✗",false]].forEach(([t,v])=>{const b=el("button",{class:"opt"},t);b.onclick=()=>{if(v===it.a){b.classList.add("right");o.querySelectorAll("button").forEach(z=>z.disabled=true);if(!tried)first++;if(++right===x.items.length)markDone(key,first,x.items.length);}else{b.classList.add("wrong");b.disabled=true;tried=true;}};o.append(b);});
+    q.append(o);c.append(q);});return c;}
+
+function rFill(x,key){const c=card(x.title,x.instr,x.rule);let right=0,first=0;
+  x.items.forEach((it,i)=>{const q=el("div",{class:"q"},qhead(i,it.q,it.gl));const inp=el("input",{type:"text",class:"ko",autocomplete:"off",autocapitalize:"off",spellcheck:"false","aria-label":"Javob",lang:"ko"});const fb=el("div",{class:"fb"});let tried=false,ok=false,hints=0;
+    const check=()=>{if(ok)return;const v=norm(inp.value);if(!v){fb.className="fb hint";fb.textContent="Avval javob yozing.";return;}
+      if(it.a.some(a=>norm(a)===v)){ok=true;inp.className="ko right";inp.readOnly=true;fb.className="fb ok";fb.textContent="✓ To'g'ri!";speak(it.a[0]);if(!tried)first++;if(++right===x.items.length)markDone(key,first,x.items.length);}
+      else{tried=true;inp.className="ko wrong";fb.className="fb no";fb.textContent="✗ Qayta urinib ko'ring.";}};
+    inp.onkeydown=e=>{if(e.key==="Enter")check();};
+    const hint=()=>{if(ok)return;tried=true;hints++;const a=[...it.a[0]];const n=Math.min(hints,Math.max(1,a.length-1));fb.className="fb hint";fb.innerHTML="";fb.append("💡 Boshlanishi: ",el("b",{class:"ko"},a.slice(0,n).join("")+"…"));};
+    q.append(el("div",{class:"row"},inp,el("button",{class:"btn",onclick:check},"Tekshirish"),el("button",{class:"btn ghost",onclick:hint},"Yordam")),fb);c.append(q);});return c;}
+
+function rOrder(x,key){const c=card(x.title,x.instr);let right=0,first=0;
+  x.items.forEach((it,i)=>{const q=el("div",{class:"q"},el("div",{},el("span",{class:"qn"},i+1),it.gl));const build=el("div",{class:"build ko"});const pool=el("div",{class:"opts ko"});const fb=el("div",{class:"fb"});let picked=[],tried=false,ok=false;
+    let chips=shuffle(it.w.map((w,j)=>({w,j})));if(chips.length>1&&chips.every((z,k)=>z.j===k))chips.reverse();
+    const draw=()=>{build.innerHTML="";pool.innerHTML="";
+      picked.forEach((p,k)=>build.append(el("button",{class:"chip",onclick:()=>{if(ok)return;picked.splice(k,1);draw();}},p.w)));
+      chips.forEach(p=>{const u=picked.includes(p);pool.append(el("button",{class:"chip"+(u?" used":""),onclick:()=>{if(ok||u)return;picked.push(p);draw();}},p.w));});};
+    const check=()=>{if(ok)return;if(picked.length<it.w.length){fb.className="fb hint";fb.textContent="Hamma so'zlarni ishlating.";return;}
+      const got=norm(picked.map(p=>p.w).join(" "));
+      if([it.w.join(" "),...it.alt].some(s=>norm(s)===got)){ok=true;fb.className="fb ok";fb.textContent="✓ To'g'ri!";speak(picked.map(p=>p.w).join(" "));if(!tried)first++;if(++right===x.items.length)markDone(key,first,x.items.length);}
+      else{tried=true;fb.className="fb no";fb.textContent="✗ Tartib noto'g'ri. So'zni bosib qaytaring.";}};
+    draw();q.append(build,pool,el("div",{class:"row"},el("button",{class:"btn",onclick:check},"Tekshirish"),el("button",{class:"btn ghost",onclick:()=>{if(!ok){picked=[];fb.textContent="";draw();}}},"Tozalash")),fb);c.append(q);});return c;}
+
+function rText(x){const c=card(x.title,x.instr);const d=el("div",{class:"text ko"});
+  x.paras.forEach(p=>{const P=el("p");p.split(/(\[[^\]]+\])/).forEach(seg=>{const m=seg.match(/^\[([^|]+)\|([^\]]+)\]$/);if(m){const b=el("button",{class:"gw"},m[1]);let tip=null;b.onclick=()=>{if(tip){tip.remove();tip=null;}else{tip=el("span",{class:"tip"},m[2]);b.after(tip);speak(m[1]);}};P.append(b);}else P.append(seg);});
+    d.append(P);});c.append(d);return c;}
+
+function rTable(x){const c=card(x.title,x.instr);const t=el("table",{class:"syl ko"});const hr=el("tr",{},el("th",{},""));x.cols.forEach(v=>hr.append(el("th",{},v)));t.append(hr);
+  x.rows.forEach(([cons,ini])=>{const tr=el("tr",{},el("th",{},cons));x.cols.forEach((v,j)=>{const ch=String.fromCharCode(0xAC00+(x.ci[cons])*588+x.vi[j]*28);let rd=(ini+x.vr[j]);if(ch==="시")rd="shi";const td=el("td",{},el("button",{class:"sylb",onclick:e=>{const b=e.currentTarget;b.classList.toggle("open");b.querySelector(".r").textContent=b.classList.contains("open")?rd:"";}},el("span",{},ch),el("span",{class:"r"},"")));tr.append(td);});t.append(tr);});
+  c.append(el("div",{style:"overflow-x:auto"},t));return c;}
+function sendCard(u){const c=card("📋 Natijani o'qituvchiga yuborish","Tugma ismingiz va ballaringizni nusxalaydi – keyin uni o'qituvchingizga xabar qilib yuboring.");const box=el("textarea",{class:"copybox",readonly:"readonly",style:"min-height:140px"});
+  c.append(el("button",{class:"btn",onclick:async()=>{if(!needName())return;const rep=report(u);box.value=rep;try{await navigator.clipboard.writeText(rep);toast("📋 Nusxalandi! Endi o'qituvchiga yuboring.");box.style.display="none";}catch(e){box.style.display="block";box.focus();box.select();toast("Matnni belgilab, nusxa oling.");}}},"📋 Nusxa olib, o'qituvchiga yuborish"),box);return c;}
+
+/* ============ YOZUV ============ */
+function countSent(v){return v.split(/[.!?\n]+/).map(z=>z.trim()).filter(z=>isKo(z)).length;}
+function rWriting(u){const w=u.writing,wrap=el("div");wrap.append(el("h2",{style:"margin:0 0 12px"},w.title));
+  const s=w.click,c1=card("1-qadam · Xatolarni toping","Xato yozilgan so'zlarni bosing, keyin «Tekshirish»ni bosing.",s.rule);const txt=el("div",{class:"clicktext ko"});const toks=[];
+  s.text.split(/(\*[^*]+\*|\s+)/).forEach(seg=>{if(!seg)return;if(/^\s+$/.test(seg)){txt.append(" ");return;}
+    const m=seg.match(/^\*([^|*]+)(?:\|([^*]+))?\*$/);let word,target=false,fix=null;if(m){word=m[1];target=true;fix=m[2]||null;}else word=seg;
+    const mm=word.match(/^(.*?)([.?!,']*)$/s);const core=mm[1],punct=mm[2];if(!core){txt.append(punct);return;}
+    const lead=core.match(/^(['"]*)(.*)$/s);if(lead[1])txt.append(lead[1]);
+    const b=el("button",{class:"cw"},lead[2]);const tk={b,target,fix,core:lead[2]};b.onclick=()=>{if(c1._checked)return;b.classList.toggle("sel");};toks.push(tk);txt.append(b);if(punct)txt.append(punct);});
+  const fb1=el("div",{class:"fb"});const key1=u.id+"-writing-1";
+  const chk=el("button",{class:"btn",style:"margin-top:10px",onclick:()=>{if(c1._checked){c1._checked=false;toks.forEach(t=>{t.b.className="cw";t.b.textContent=t.core;});chk.textContent="Tekshirish";fb1.textContent="";return;}
+    c1._checked=true;let hit=0,wrong=0,n=0;toks.forEach(t=>{const sel=t.b.classList.contains("sel");if(t.target){n++;t.b.textContent=t.fix?`${t.core} → ${t.fix}`:t.core;if(sel){hit++;t.b.className="cw right";}else t.b.className="cw missed";}else if(sel){wrong++;t.b.className="cw wrong";}else t.b.className="cw";});
+    if(hit===n&&!wrong){fb1.className="fb ok";fb1.textContent=`✓ Hammasi to'g'ri! (${hit}/${n})`;markDone(key1,hit,n);}else{fb1.className="fb no";fb1.textContent=`Topildi: ${hit}/${n}. Ortiqcha belgilangan: ${wrong}. Qaytadan urinib ko'ring.`;}
+    chk.textContent="Qaytadan";}},"Tekshirish");
+  c1.append(txt,chk,fb1);wrap.append(c1);
+  const c2=card("2-qadam · Namunani o'qing","Namuna matnni diqqat bilan o'qing.");c2.append(el("div",{class:"model ko"},el("b",{},w.model.title),w.model.text));wrap.append(c2);
+  const key3=u.id+"-writing-3";const c3=card("3-qadam · Navbat sizda ✍️",w.task);c3.append(el("div",{class:"rule"},w.include));
+  const ta=el("textarea",{class:"ko",placeholder:"Shu yerga koreys tilida yozing…","aria-label":"Matn",lang:"ko"});ta.value=S.text[u.id]||"";
+  const cnt=el("div",{class:"small"});const ul=el("ul",{class:"checks"});
+  const upd=()=>{const v=ta.value;S.text[u.id]=v;save();const sents=countSent(v);
+    cnt.textContent=`${sents} ta gap (maqsad: ${w.min}–${w.max})`;ul.innerHTML="";let all=true;
+    w.checks.forEach(([test,label])=>{const ok=test==="sent"?sents>=w.min:test.test(v);if(!ok)all=false;ul.append(el("li",{class:ok?"ok":""},(ok?"✓ ":"○ ")+label));});
+    if(all&&!S.done[key3])markDone(key3);};
+  ta.oninput=upd;
+  const box=el("textarea",{class:"copybox",readonly:"readonly",style:"min-height:140px"});
+  const send=el("button",{class:"btn",onclick:async()=>{if(!needName())return;const rep=report(u);box.value=rep;try{await navigator.clipboard.writeText(rep);toast("📋 Nusxalandi! Endi o'qituvchiga yuboring.");box.style.display="none";}catch(e){box.style.display="block";box.focus();box.select();toast("Matnni belgilab, nusxa oling.");}}},"📋 Nusxa olib, o'qituvchiga yuborish");
+  c3.append(ta,cnt,ul,send,box,el("div",{class:"small",style:"margin-top:8px"},"Matningiz shu qurilmada saqlanadi. Tugma matningiz va ballaringizni nusxalaydi – keyin uni o'qituvchingizga xabar qilib yuboring."));
+  wrap.append(c3);setTimeout(upd);return wrap;}
+
+function report(u){const [d,t]=unitProgress(u);const lines=[`Koreys tili uy vazifasi (한국어 첫걸음 1A · Lug'at)`,`Ism: ${S.name||"(yozilmagan)"}`,`${u.label||(u.num+"-dars")}: ${u.ko} (${u.uz})`,`Bajarildi: ${d} / ${t}`,""];
+  for(const[tab,lab]of TABS){if(tab==="writing"&&!Array.isArray(u.writing))continue;u[tab].forEach((x,i)=>{const k=`${u.id}-${tab}-${i}`;if(x.type==="text"||x.type==="bank")return;const sc=S.score[k];lines.push(`${lab} · ${x.title}: ${S.done[k]?(sc?`${sc[0]}/${sc[1]} (birinchi urinishda)`:"✓"):"bajarilmagan"}`);});}
+  if(Array.isArray(u.writing))return lines.join("\n");
+  lines.push(`Yozuv · Xatolarni topish: ${S.done[u.id+"-writing-1"]?"✓":"bajarilmagan"}`);lines.push("","— Matnim —",(S.text[u.id]||"").trim()||"(bo'sh)");return lines.join("\n");}
+
+/* ============ ISM ============ */
+function needName(){if(S.name&&S.name.trim())return true;const i=$("#nm2")||$("#nm");toast("✍️ Avval ismingizni yozing!");if(i){i.scrollIntoView({behavior:"smooth",block:"center"});i.focus();i.classList.add("need");}return false;}
+function nameCard(){const c=el("div",{class:"card namecard"+(S.name&&S.name.trim()?"":" empty")});
+  const lab=el("label",{class:"nm",for:"nm2"},"👤 Ismingiz / 이름");
+  const i=el("input",{type:"text",id:"nm2",placeholder:"Ism va familiyangizni yozing",autocomplete:"name"});i.value=S.name||"";
+  const hint=el("div",{class:"small"},"Ismingiz natija bilan birga o'qituvchiga yuboriladi.");
+  i.oninput=()=>{S.name=i.value;save();i.classList.remove("need");c.classList.toggle("empty",!i.value.trim());};
+  c.append(lab,i,hint);return c;}
+
+/* ============ SAHIFALAR ============ */
+let cur=null;
+function refreshTabs(){if(!cur)return;document.querySelectorAll(".tabs button").forEach(b=>{b.querySelector(".dot").textContent=tabDone(cur,b.dataset.t)?" ✓":"";});const h=$("#prog");if(h){const[d,t]=unitProgress(cur);h.textContent=`${d} / ${t} topshiriq bajarildi`;}}
+function tgLink(){return el("a",{href:"https://t.me/"+TG,target:"_blank",rel:"noopener",class:"tg"},"@"+TG);}
+function footer(){return el("footer",{},el("div",{class:"author"},AUTHOR),el("div",{},tgLink()),el("div",{class:"small",style:"margin-top:4px"},BOOK));}
+
+function home(){cur=null;document.documentElement.style.setProperty("--accent","#2f6fd6");const app=$("#app");app.innerHTML="";
+  let D=0,Tt=0;UNITS.forEach(u=>{const[d,t]=unitProgress(u);D+=d;Tt+=t;});
+  app.append(el("header",{},el("div",{class:"in"},el("h1",{},"So'z testlari ",el("span",{class:"ko"},"어휘")),el("p",{},SUB),el("p",{class:"hauthor"},AUTHOR+" · ",tgLink()))));
+  const m=el("main");const nc=el("div",{class:"card"},el("label",{class:"nm",for:"nm"},"Ismingiz / 이름"));const ni=el("input",{type:"text",id:"nm",placeholder:"Ismingizni yozing"});ni.value=S.name;ni.oninput=()=>{S.name=ni.value;save();};
+  nc.append(ni,el("div",{class:"bar",style:"--uc:var(--ok)"},el("i",{style:`width:${Tt?D/Tt*100:0}%`})),el("div",{class:"small"},`Umumiy natija: ${D} / ${Tt} topshiriq`));m.append(nc);
+  UNITS.forEach(u=>{if(u.section)m.append(el("h2",{class:"sect"},u.section));const[d,t]=unitProgress(u);const b=el("button",{class:"card unit",style:`--uc:${u.color}`,onclick:()=>{location.hash=u.id+"-vocab";}},
+    el("div",{class:"tag"},u.tag||`${u.num}-dars · 제${u.num}과`),el("h2",{},el("span",{class:"ko"},u.ko)," ",el("span",{style:"font-weight:600;color:var(--muted);font-size:1rem"},u.uz),d===t?el("span",{class:"donebadge"},"✓ Tugallandi"):null),el("div",{class:"topics"},u.topics),el("div",{class:"bar"},el("i",{style:`width:${t?d/t*100:0}%`})),el("div",{class:"small"},`${d} / ${t} topshiriq bajarildi`));m.append(b);});
+  app.append(m,footer());window.scrollTo(0,0);}
+
+function unitPage(u,tab){cur=u;document.documentElement.style.setProperty("--accent",u.color);const app=$("#app");app.innerHTML="";
+  const[d,t]=unitProgress(u);
+  const nav=el("div",{style:"display:flex;gap:6px;flex-wrap:wrap"},el("button",{class:"back",onclick:()=>{location.hash="home";}},"← Barcha darslar"));
+  if(u.num>1)nav.append(el("button",{class:"back",onclick:()=>{location.hash=`u${u.num-1}-vocab`;}},`‹ ${UNITS[u.num-2].label||(u.num-1)+"-dars"}`));
+  if(u.num<UNITS.length)nav.append(el("button",{class:"back",onclick:()=>{location.hash=`u${u.num+1}-vocab`;}},`${UNITS[u.num].label||(u.num+1)+"-dars"} ›`));
+  app.append(el("header",{},el("div",{class:"in"},nav,el("h1",{},`${u.label||(u.num+"-dars")} · `,el("span",{class:"ko"},u.ko)," ",el("span",{style:"font-weight:600;opacity:.85;font-size:.8em"},u.uz)),el("p",{id:"prog"},`${d} / ${t} topshiriq bajarildi`))));
+  const m=el("main");m.append(nameCard());const tb=el("div",{class:"tabs"});
+  TABS.forEach(([k,l])=>tb.append(el("button",{class:k===tab?"on":"","data-t":k,onclick:()=>{location.hash=`${u.id}-${k}`;}},l,el("span",{class:"dot"},""))));m.append(tb);
+  if(tab==="writing"&&!Array.isArray(u.writing))m.append(rWriting(u));
+  else{u[tab].forEach((x,i)=>{const key=`${u.id}-${tab}-${i}`;const f={bank:rBank,match:rMatch,mc:rMC,tf:rTF,fill:rFill,order:rOrder,text:rText,table:rTable}[x.type];m.append(f(x,key));});
+    if(tab==="writing")m.append(sendCard(u));}
+  const idx=TABS.findIndex(z=>z[0]===tab);
+  if(idx<TABS.length-1)m.append(el("button",{class:"btn next",onclick:()=>{location.hash=`${u.id}-${TABS[idx+1][0]}`;}},`Keyingisi: ${TABS[idx+1][1]} →`));
+  else if(u.num<UNITS.length)m.append(el("button",{class:"btn next",onclick:()=>{location.hash=`u${u.num+1}-vocab`;}},`Keyingi dars: ${UNITS[u.num].label||(u.num+1)+"-dars"} →`));
+  else m.append(el("button",{class:"btn ghost next",onclick:()=>{location.hash="home";}},"← Barcha darslarga qaytish"));
+  app.append(m,footer());refreshTabs();window.scrollTo(0,0);}
+
+function route(){const h=location.hash.replace("#","");const m=h.match(/^u(\d+)-(vocab|reading|grammar|writing)$/);const u=m&&UNITS[+m[1]-1];if(u)unitPage(u,m[2]);else home();}
+window.addEventListener("hashchange",route);
+route();
+
+</script>
+</body>
+</html>
